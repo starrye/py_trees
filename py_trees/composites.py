@@ -731,8 +731,7 @@ class Parallel(Composite):
                     new_status = common.Status.SUCCESS
                     self.current_child = self.children[-1]
             elif type(self.policy) is common.ParallelPolicy.SuccessOnOne:
-                for index in range(len(self.children) - 1, -1, -1):
-                    child = self.children[index]
+                for child in reversed(self.children):
                     if child.status == common.Status.SUCCESS:
                         new_status = common.Status.SUCCESS
                         self.current_child = child
